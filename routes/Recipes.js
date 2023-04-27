@@ -35,6 +35,7 @@ recipe_router.get('/allrecipes', async(req,res)=>{
         //const  docs= await Post.find().populate('author',['username'])
         const allrecipes = await RecipeModel.find().populate('userOwner',['username'])
        res.json(allrecipes)
+       console.log("all recipes")
 } catch(err){
     res.json(err)
 }

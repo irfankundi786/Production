@@ -28,6 +28,7 @@ const connectDB = async () => {
    }
  }
 //static files
+console.log(path.join(__dirname))
 app.use(express.static(path.join(__dirname, "./FrontEnd/food/dist")));
 app.get("*", function (req, res) {
   try{
