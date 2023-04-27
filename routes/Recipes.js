@@ -32,10 +32,11 @@ recipe_router.post('/create',upload.single('files'),async(req,res)=>{
 //All Recipes 
 recipe_router.get('/allrecipes', async(req,res)=>{
     try {
+        console.log("all recipes")
         //const  docs= await Post.find().populate('author',['username'])
         const allrecipes = await RecipeModel.find().populate('userOwner',['username'])
        res.json(allrecipes)
-       console.log("all recipes")
+      
 } catch(err){
     res.json(err)
 }
