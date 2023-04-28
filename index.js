@@ -27,18 +27,7 @@ const connectDB = async () => {
      process.exit(1);
    }
  }
-//static files
-console.log(path.join(__dirname))
-app.use(express.static(path.join(__dirname, "./FrontEnd/food/dist")));
-app.get("*", function (req, res) {
-  try{
-   res.sendFile(path.join(__dirname, "./FrontEnd/food/dist/index.html"));
-  } 
-  catch(error)
-  {
-   res.status(500).send(error)
-  }  
-});
+
 app.use('/auth',router)
 app.use('/recipe',recipe_router)
 //connect to databasecd ..
@@ -51,3 +40,15 @@ connectDB().then(() => {
   {console.log(error)})
   
   //end database portion
+  //static files
+console.log(path.join(__dirname))
+app.use(express.static(path.join(__dirname, "./FrontEnd/food/dist")));
+app.get("*", function (req, res) {
+  try{
+   res.sendFile(path.join(__dirname, "./FrontEnd/food/dist/index.html"));
+  } 
+  catch(error)
+  {
+   res.status(500).send(error)
+  }  
+});
